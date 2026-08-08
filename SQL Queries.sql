@@ -39,13 +39,22 @@ SELECT *
 FROM customers
 WHERE customer_name IS NULL;
 
+
 SELECT *
 FROM products
 WHERE product_name IS NULL;
 
+
 SELECT *
 FROM orders
 WHERE customer_id IS NULL;
+
+
+-- Duplicate Customers
+SELECT customer_id,COUNT(*)
+FROM customers
+GROUP BY customer_id
+HAVING COUNT(*)>1;
 
 
 -- 1) Total Revenue:
@@ -55,11 +64,16 @@ FROM
 order_items oi;
 
 
--- Total orders:
+-- 2) Total orders:
 SELECT 
 COUNT(order_id) as Total_Orders
 FROM
 order_items;            -- Total orders=150232
 
 
--- Top Selling Product:
+-- 3) Top Selling Product:
+
+
+
+
+
