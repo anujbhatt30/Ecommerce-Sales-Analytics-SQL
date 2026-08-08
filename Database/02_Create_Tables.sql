@@ -94,9 +94,4 @@ REFERENCES orders(order_id)
 
 
 
-select * from categories;
-select * from suppliers;
-select * from products;
-select count(*) from customers;
-select * from customers;
-DESCRIBE customers;
+

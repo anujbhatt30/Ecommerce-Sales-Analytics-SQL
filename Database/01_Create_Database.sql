@@ -1,6 +1,6 @@
 CREATE DATABASE ecomerce_sales;
 USE ecomerce_sales;
-CREATE TABLE Customers(
+CREATE TABLE customers(
 customer_id INT AUTO_INCREMENT PRIMARY KEY,
 first_name VARCHAR(50) NOT NULL,
 last_name VARCHAR(50) NOT NULL,
@@ -12,6 +12,7 @@ state VARCHAR(50),
 signup_date DATE NOT NULL
 );
 
-
+ALTER TABLE customers
+ADD COLUMN country VARCHAR(50);
 
 
