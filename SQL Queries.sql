@@ -71,9 +71,25 @@ FROM
 order_items;            -- Total orders=150232
 
 
--- 3) Top Selling Product:
+-- 3) Average Order Value:
+SELECT ROUND(SUM(oi.quantity * oi.unit_price)/COUNT(order_id),2) AS Avg_Order_Value
+FROM order_items oi;
 
 
+-- 4) Monthly Revenue:
+SELECT
+YEAR(O.order_date) AS Year,
+MONTH(O.order_date) AS Month,
+ROUND(SUM(OI.quantity * OI.unit_price),2) AS Total_Revenue
+FROM orders O  
+JOIN order_items OI
+ON O.order_id = OI.order_id
+GROUP BY YEAR,MONTH
+ORDER BY YEAR,MONTH;
+
+
+-- 5) Total Customers:
+SELECT COUNT(*) AS Total_Customers FROM customers;
 
 
 
