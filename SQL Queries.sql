@@ -92,4 +92,14 @@ ORDER BY YEAR,MONTH;
 SELECT COUNT(*) AS Total_Customers FROM customers;
 
 
+-- 6) Customer Purchase Frequency:
+SELECT 
+customer_id,
+COUNT(order_id) AS Orders_Placed 
+FROM orders
+GROUP BY customer_id
+ORDER by Orders_Placed DESC;
+
+
+
 
