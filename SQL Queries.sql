@@ -89,7 +89,8 @@ ORDER BY YEAR,MONTH;
 
 
 -- 5) Total Customers:
-SELECT COUNT(*) AS Total_Customers FROM customers;
+SELECT COUNT(*) AS Total_Customers
+FROM customers;
 
 
 -- 6) Customer Purchase Frequency:
@@ -99,6 +100,36 @@ COUNT(order_id) AS Orders_Placed
 FROM orders
 GROUP BY customer_id
 ORDER by Orders_Placed DESC;
+
+
+-- 7) Products By Suppliers:
+SELECT (s.supplier_name),COUNT(p.product_id) AS Total_products
+FROM suppliers s
+JOIN products p 
+ON s.supplier_id=p.supplier_id
+GROUP by s.supplier_name
+ORDER BY Total_products DESC;
+
+
+-- 8) Payment Analysis:
+
+-- a) Payment Platforms:-
+SELECT payment_method,
+COUNT(*) AS Transactions 
+FROM payments
+GROUP BY payment_method
+ORDER BY Transactions DESC;
+
+-- b) Payment Collections From Different Platforms:-
+SELECT payment_method AS Payment_Platforms,
+ROUND(SUM(amount),2) AS Total_Collection
+FROM payments
+GROUP BY payment_method;
+ 
+
+
+
+
 
 
 
