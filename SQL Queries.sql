@@ -156,14 +156,37 @@ GROUP BY c.first_name)t
 WHERE Customer_Rank <=5;
 
 
+-- 11) Top Product in Each Category:
+WITH ProductSales
+AS 
+(SELECT
+c.category_name,
+p.product_name,
+SUM(oi.quantity) AS Qty
+FROM categories c
+JOIN products p
+ON c.category_id=p.category_id
+JOIN order_items oi
+ON p.product_id=oi.product_id
+GROUP BY c.category_name,p.product_name)
+SELECT * FROM
+ProductSales;
+ 
 
-
-
-
-
-
-
-
-
-
+-- 12)Highest Spending Customer:
+SELECT
+Customer_name,
+Total_spent 
+FROM
+(SELECT 
+CONCAT(c.first_name,'',c.last_name) AS Customer_name,
+SUM(oi.quantity*oi.unit_price) AS Total_Spent
+FROM customers c
+JOIN orders o
+ON c.customer_id=o.customer_id
+JOIN order_items oi
+ON o.order_id=oi.order_id
+GROUP BY c.first_name,c.last_name)t
+ORDER BY Total_Spent DESC
+LIMIT 1;
 
