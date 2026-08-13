@@ -127,6 +127,39 @@ FROM payments
 GROUP BY payment_method;
  
 
+-- 9) Return Analysis
+
+-- a) Return Orders:-
+SELECT COUNT(*) AS Total_Returns 
+FROM returns;
+
+-- b) Return Percentage:-
+SELECT ROUND(COUNT(r.return_id)*100.0/COUNT(DISTINCT o.order_id),2)
+AS Return_Rate
+FROM orders o
+LEFT JOIN returns r
+ON o.order_id=r.order_id; 
+
+
+-- 10) Top 5 Customers:
+SELECT * FROM 
+(SELECT
+c.first_name,  
+SUM(oi.quantity * oi.unit_price) AS Spending,
+RANK() OVER(ORDER BY SUM(oi.quantity * oi.unit_price) DESC) AS Customer_Rank
+FROM customers c
+JOIN orders o
+ON c.customer_id=o.customer_id
+JOIN order_items oi
+ON o.order_id=oi.order_id
+GROUP BY c.first_name)t
+WHERE Customer_Rank <=5;
+
+
+
+
+
+
 
 
 
