@@ -156,6 +156,8 @@ GROUP BY c.first_name)t
 WHERE Customer_Rank <=5;
 
 
+
+
 -- 11) Top Product in Each Category:
 WITH ProductSales
 AS 
@@ -171,7 +173,8 @@ ON p.product_id=oi.product_id
 GROUP BY c.category_name,p.product_name)
 SELECT * FROM
 ProductSales;
- 
+
+
 
 -- 12)Highest Spending Customer:
 SELECT

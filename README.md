@@ -192,6 +192,102 @@ The project applies:
 
 ---
 
+---
+# 📊 SQL Analysis Results
+
+Here are the screenshots of key SQL query outputs generated during the **Ecommerce Sales Analytics** project.
+
+The results demonstrate practical SQL analysis across customer behavior, sales trends, and product performance.
+
+---
+
+## 📁 Results
+
+### 1. Highest Purchasing Customer
+
+This analysis identifies the customer with the highest total purchase value.
+
+**Business Question:**
+
+> Which customer has contributed the most revenue to the business?
+
+![Highest Purchasing Customer](Results/highest_purchasing_customer.png)
+
+---
+
+### 2. Monthly Sales Analysis
+
+This analysis shows sales performance across different months.
+
+**Business Question:**
+
+> How does revenue change over time?
+
+![Monthly Sales](Results/monthly_sales.png)
+
+This analysis can help identify:
+
+* Monthly sales trends
+* High-performing periods
+* Low-performing periods
+* Potential seasonal patterns
+
+---
+
+### 3. Top Customers
+
+This query ranks customers based on their total spending.
+
+**Business Question:**
+
+> Who are the most valuable customers?
+
+![Top Customers](Results/top_customer.png)
+
+This information can be used for:
+
+* Customer segmentation
+* Loyalty programs
+* Targeted marketing
+* Customer retention strategies
+
+---
+
+### 4. Top Products
+
+This analysis identifies the products generating the highest sales.
+
+**Business Question:**
+
+> Which products are the best performers?
+
+![Top Products](Results/top_products.png)
+
+These insights can support:
+
+* Inventory planning
+* Product promotion
+* Sales strategy
+* Product portfolio optimization
+
+---
+
+## 🎯 Business Insights
+
+The SQL analysis provides a foundation for understanding:
+
+* 💰 Revenue performance
+* 👥 Customer purchasing behavior
+* 📈 Monthly sales trends
+* 🛍️ Product performance
+* ⭐ High-value customers
+
+These results demonstrate how SQL can be used to transform transactional ecommerce data into actionable business insights.
+
+---
+
+---
+
 # 📈 Key Insights Generated
 
 Some insights obtained from analysis:
