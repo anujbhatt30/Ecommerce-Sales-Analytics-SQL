@@ -88,6 +88,12 @@ GROUP BY YEAR,MONTH
 ORDER BY YEAR,MONTH;
 
 
+
+
+
+
+
+
 -- 5) Total Customers:
 SELECT COUNT(*) AS Total_Customers
 FROM customers;
@@ -126,7 +132,7 @@ ROUND(SUM(amount),2) AS Total_Collection
 FROM payments
 GROUP BY payment_method;
  
-
+ 
 -- 9) Return Analysis
 
 -- a) Return Orders:-
@@ -156,8 +162,6 @@ GROUP BY c.first_name)t
 WHERE Customer_Rank <=5;
 
 
-
-
 -- 11) Top Product in Each Category:
 WITH ProductSales
 AS 
@@ -173,7 +177,6 @@ ON p.product_id=oi.product_id
 GROUP BY c.category_name,p.product_name)
 SELECT * FROM
 ProductSales;
-
 
 
 -- 12)Highest Spending Customer:
@@ -192,4 +195,69 @@ ON o.order_id=oi.order_id
 GROUP BY c.first_name,c.last_name)t
 ORDER BY Total_Spent DESC
 LIMIT 1;
+
+
+-- 13) RFM Analysis" or "RFM Segmentation:
+WITH customer_metrics AS
+(SELECT
+c.customer_id,
+CONCAT(c.first_name,'',c.last_name) AS customer_name,
+MAX(o.order_date) AS last_order_date,
+COUNT(DISTINCT o.order_id) AS frequency,
+SUM(oi.quantity * oi.unit_price) AS monetary
+FROM customers c
+JOIN orders o 
+ON c.customer_id=o.customer_id
+JOIN order_items oi 
+ON o.order_id=oi.order_id
+GROUP BY c.customer_id,CONCAT(c.first_name,'',c.last_name)),
+rfm_score AS (
+SELECT * , 
+DATEDIFF((SELECT MAX(order_date) FROM orders), last_order_date) AS recency,
+NTILE(5) OVER (ORDER BY DATEDIFF((SELECT MAX(order_date) FROM orders), last_order_date) DESC) AS recency_score,
+NTILE(5) OVER (ORDER BY frequency) AS frequency_score,
+NTILE(5) OVER (ORDER BY monetary) AS monetary_score
+FROM customer_metrics)  
+SELECT 
+customer_id,
+customer_name,
+recency,
+frequency,
+ROUND(monetary,2) AS monetary,
+recency_score,
+frequency_score,
+monetary_score,
+CONCAT(recency_score,frequency_score,monetary_score) AS rfm_score
+FROM rfm_score
+ORDER BY monetary DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
