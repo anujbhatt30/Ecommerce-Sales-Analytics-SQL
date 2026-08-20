@@ -421,7 +421,7 @@ Some insights obtained from analysis:
 
 ## 📁 Project Structure
 
-\```
+```
 Ecommerce-Sales-Analytics-SQL
 │
 ├── Dataset
@@ -441,7 +441,7 @@ Ecommerce-Sales-Analytics-SQL
 │   └── RFM_Customer_Segmentation_Project.pdf
 │
 └── README.md
-\```
+```
 
 --- 
 
