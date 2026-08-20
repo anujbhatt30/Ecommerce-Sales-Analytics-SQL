@@ -1,12 +1,15 @@
-🛒 Ecommerce Sales Analytics using SQL
-📌 Project Overview
+# 🛒 Ecommerce Sales Analytics using SQL
+
+## 📌 Project Overview
 This project focuses on analyzing e-commerce sales data using SQL to extract meaningful business insights. The goal is to understand sales performance, customer behavior, product trends, regional performance, and customer value through data analysis.
 
 ---
 
 The project demonstrates practical SQL skills including database creation, data importing, data cleaning, aggregation, joins, subqueries, CTEs, and window functions.
 
-🎯 Problem Statement
+---
+
+## 🎯 Problem Statement
 E-commerce businesses generate large amounts of transactional data. Analyzing this data helps organizations understand:
 
 Revenue performance
@@ -19,46 +22,55 @@ This project uses SQL-based analysis to answer important business questions and 
 
 ---
 
-📂 Dataset Information
+## 📂 Dataset Information
+
 The dataset contains transactional e-commerce sales records with details about:
 
-Column	Description
-Order ID	Unique identifier for each order
-Order Date	Date when order was placed
-Customer ID	Unique customer identifier
-Customer Name	Customer details
-Product Name	Name of purchased product
-Category	Product category
-Region	Customer region
-State	Customer state
-Quantity	Number of products purchased
-Sales	Revenue generated
-Profit	Profit earned
+```
+  Column	             Description
+
+- Order ID  	   Unique identifier for each order
+- Order Date 	   Date when order was placed
+- Customer ID 	   Unique customer identifier
+- Customer Name    Customer details
+- Product Name     Name of purchased product
+- Category         Product category
+- Region 	       Customer region
+- State	           Customer state
+- Quantity  	   Number of products purchased
+- Sales 	       Revenue generated
+- Profit 	       Profit earned
+
+```
+---
+
+## 🛠️ Technologies Used
+
+- MySQL
+- SQL
+- MySQL Workbench
+- CSV Dataset
+- Git & GitHub
 
 ---
 
-🛠️ Technologies Used
-MySQL
-SQL
-MySQL Workbench
-CSV Dataset
-Git & GitHub
+## 🗄️ Database Design
 
----
-
-🗄️ Database Design
 The project includes:
 
-Database creation
-Table creation
-Data importing
-Data validation
-Analytical queries
+- Database creation
+- Table creation
+- Data importing
+- Data validation
+- Analytical queries
+
 Example:
 
 CREATE DATABASE ecommerce_sales;
 
-🔍 Business Analysis Performed
+---
+
+## 🔍 Business Analysis Performed
 
 
 1. Sales Performance Analysis
@@ -70,9 +82,11 @@ Analyzed:
 - Average order value
 - Example:
 
+```
 SELECT 
 SUM(sales) AS total_revenue
 FROM orders;
+```
 
 ---
 
@@ -84,12 +98,14 @@ Identified:
 - Product contribution to revenue
 - Example:
 
+```
 SELECT
 product_name,
 SUM(sales) AS revenue
 FROM orders
 GROUP BY product_name
 ORDER BY revenue DESC;
+```
 
 ---
 
@@ -102,12 +118,14 @@ Performed customer-level analysis:
 - Customer value analysis
 - Example:
 
+```
 SELECT
 customer_name,
 SUM(sales) AS total_spending
 FROM orders
 GROUP BY customer_name
 ORDER BY total_spending DESC;
+```
 
 ---
 
@@ -119,18 +137,20 @@ Analyzed:
 - Regional profitability
 - Example:
 
+```
 SELECT
 region,
 SUM(sales) AS revenue
 FROM orders
 GROUP BY region;
+```
 
 ---
 
 5. Customer Segmentation (RFM Analysis)
 Goes beyond simple top-spender ranking to classify every customer by behavior, using two complementary SQL approaches.
 
-### Business Question:
+## Business Question:
 
 Who are our most valuable customers, and which valuable customers are at risk of churning?
 
@@ -204,8 +224,11 @@ FROM rfm_scores
 ORDER BY monetary DESC;
 ```
 
-**Reading an RFM Score**
-Each customer gets a 3-digit code (e.g. "555" or "355") from their R/F/M scores (1–5 each):
+--- 
+
+## **Reading an RFM Score**
+
+- Each customer gets a 3-digit code (e.g. "555" or "355") from their R/F/M scores (1–5 each):
 
 | Segment | Typical Pattern | Meaning |
 |---|---|---|
@@ -224,49 +247,56 @@ This information can be used for:
 - Personalized marketing spend allocation
 - Churn-risk prioritization for the retention team
 
-📊 Advanced SQL Concepts Used
+--- 
 
-### The project applies:
+## 📊 Advanced SQL Concepts Used:
 
-✅ Aggregate Functions
+---
 
-SUM()
-COUNT()
-AVG()
-MAX()
-MIN()
-✅ Filtering & Sorting
+## The project applies:
 
-WHERE
-HAVING
-ORDER BY
-✅ Joins
+### ✅ Aggregate Functions
 
-INNER JOIN
-LEFT JOIN
-✅ Subqueries
+- SUM()
+- COUNT()
+- AVG()
+- MAX()
+- MIN()
+### ✅ Filtering & Sorting
 
-✅ Common Table Expressions (CTEs)
+- WHERE
+- HAVING
+- ORDER BY
 
-✅ Window Functions
+### ✅ Joins
 
-RANK()
-ROW_NUMBER()
-DENSE_RANK()
-NTILE()
-✅ Customer Segmentation Logic
+- INNER JOIN
+- LEFT JOIN
+
+### ✅ Subqueries
+
+### ✅ Common Table Expressions (CTEs)
+
+### ✅ Window Functions
+
+- RANK()
+- ROW_NUMBER()
+- DENSE_RANK()
+- NTILE()
+
+### ✅ Customer Segmentation Logic
 
 - CASE WHEN rule-based segmentation
 - NTILE-based relative RFM scoring
 
 ---
 
-📊 SQL Analysis Results
+## 📊 SQL Analysis Results
 Here are the screenshots of key SQL query outputs generated during the Ecommerce Sales Analytics project.
 
 The results demonstrate practical SQL analysis across customer behavior, sales trends, product performance, and customer segmentation.
 
-📁 Results:
+## 📁 Results:
 
 1. Highest Purchasing Customer
 This analysis identifies the customer with the highest total purchase value.
@@ -362,7 +392,7 @@ Which customers are Champions, and which valuable customers are at risk of churn
 
 RFM Segmentation
 
-🎯 Business Insights
+## 🎯 Business Insights
 The SQL analysis provides a foundation for understanding:
 
 - 💰 Revenue performance
@@ -375,7 +405,8 @@ The SQL analysis provides a foundation for understanding:
 
 ---
 
-📈 Key Insights Generated
+## 📈 Key Insights Generated
+
 Some insights obtained from analysis:
 
 - Identified products generating maximum revenue.
@@ -388,8 +419,9 @@ Some insights obtained from analysis:
 
 ---
 
-### 📁 Project Structure
+## 📁 Project Structure
 
+\```
 Ecommerce-Sales-Analytics-SQL
 │
 ├── Dataset
@@ -409,10 +441,11 @@ Ecommerce-Sales-Analytics-SQL
 │   └── RFM_Customer_Segmentation_Project.pdf
 │
 └── README.md
+\```
 
 --- 
 
-🚀 Future Improvements
+## 🚀 Future Improvements
 
 - Build an interactive Power BI dashboard
 - Use RFM scores as input features for a K-Means clustering model
@@ -426,7 +459,9 @@ Ecommerce-Sales-Analytics-SQL
 
 Anuj Bhatt
 
-### Skills:
+---
+
+## Skills:
 
 - SQL
 - Python
@@ -434,6 +469,6 @@ Anuj Bhatt
 - Data Analytics
 - Power BI
 
-
+---
 
 ⭐ If you found this project useful, consider giving it a star!
