@@ -198,39 +198,88 @@ LIMIT 1;
 
 
 -- 13) RFM Analysis" or "RFM Segmentation:
-WITH customer_metrics AS
-(SELECT
+WITH customer_metrics AS 
+(
+SELECT
 c.customer_id,
-CONCAT(c.first_name,'',c.last_name) AS customer_name,
+CONCAT(first_name,' ',last_name) AS customer_name,
 MAX(o.order_date) AS last_order_date,
 COUNT(DISTINCT o.order_id) AS frequency,
 SUM(oi.quantity * oi.unit_price) AS monetary
 FROM customers c
-JOIN orders o 
-ON c.customer_id=o.customer_id
-JOIN order_items oi 
-ON o.order_id=oi.order_id
-GROUP BY c.customer_id,CONCAT(c.first_name,'',c.last_name)),
-rfm_score AS (
-SELECT * , 
-DATEDIFF((SELECT MAX(order_date) FROM orders), last_order_date) AS recency,
-NTILE(5) OVER (ORDER BY DATEDIFF((SELECT MAX(order_date) FROM orders), last_order_date) DESC) AS recency_score,
+JOIN orders o
+ON c.customer_id = o.customer_id
+JOIN order_items oi
+ON o.order_id = oi.order_id
+GROUP BY
+c.customer_id,
+CONCAT(first_name,' ',last_name) 
+),
+rfm_scores AS 
+(
+SELECT
+*,
+DATEDIFF((SELECT MAX(order_date) FROM orders),last_order_date) AS recency,
+NTILE(5) OVER (ORDER BY DATEDIFF((SELECT MAX(order_date) FROM orders),last_order_date) DESC) AS recency_score,
 NTILE(5) OVER (ORDER BY frequency) AS frequency_score,
 NTILE(5) OVER (ORDER BY monetary) AS monetary_score
-FROM customer_metrics)  
-SELECT 
+FROM customer_metrics
+)
+SELECT
 customer_id,
 customer_name,
 recency,
 frequency,
-ROUND(monetary,2) AS monetary,
+ROUND(monetary, 2) AS monetary,
 recency_score,
 frequency_score,
 monetary_score,
 CONCAT(recency_score,frequency_score,monetary_score) AS rfm_score
-FROM rfm_score
+FROM rfm_scores
 ORDER BY monetary DESC;
 
+
+
+
+-- 14) Customer Segmentation:
+WITH customer_spending AS
+(
+SELECT
+c.customer_id,
+CONCAT(first_name,' ',last_name) AS customer_name,
+COUNT(DISTINCT o.order_id) AS total_orders,
+SUM(oi.quantity * oi.unit_price) AS total_spending
+FROM customers c
+JOIN orders o
+ON c.customer_id = o.customer_id
+JOIN order_items oi
+ON o.order_id = oi.order_id
+GROUP BY
+c.customer_id,
+CONCAT(first_name,' ',last_name)
+)
+SELECT
+customer_id,
+customer_name,
+total_orders,
+ROUND(total_spending, 2) AS total_spending,
+CASE
+	WHEN total_spending >= 10000
+	AND  total_orders >= 5
+    THEN 'VIP Customer'
+
+	WHEN total_spending >= 5000
+	AND total_orders >= 3
+	THEN 'High Value Customer'
+
+	WHEN total_orders >= 2
+	THEN 'Repeat Customer'
+
+	ELSE 'Occasional Customer'
+END AS customer_segment
+
+FROM customer_spending
+ORDER BY total_spending DESC;
 
 
 
