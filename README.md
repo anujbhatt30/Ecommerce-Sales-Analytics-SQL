@@ -2,6 +2,8 @@
 📌 Project Overview
 This project focuses on analyzing e-commerce sales data using SQL to extract meaningful business insights. The goal is to understand sales performance, customer behavior, product trends, regional performance, and customer value through data analysis.
 
+---
+
 The project demonstrates practical SQL skills including database creation, data importing, data cleaning, aggregation, joins, subqueries, CTEs, and window functions.
 
 🎯 Problem Statement
@@ -14,6 +16,8 @@ Category performance
 Regional sales trends
 Customer value, loyalty, and churn risk
 This project uses SQL-based analysis to answer important business questions and support data-driven decision-making.
+
+---
 
 📂 Dataset Information
 The dataset contains transactional e-commerce sales records with details about:
@@ -30,12 +34,18 @@ State	Customer state
 Quantity	Number of products purchased
 Sales	Revenue generated
 Profit	Profit earned
+
+---
+
 🛠️ Technologies Used
 MySQL
 SQL
 MySQL Workbench
 CSV Dataset
 Git & GitHub
+
+---
+
 🗄️ Database Design
 The project includes:
 
@@ -46,27 +56,33 @@ Data validation
 Analytical queries
 Example:
 
-CREATE DATABASE ecommerce_sales_analytics;
+CREATE DATABASE ecommerce_sales;
+
 🔍 Business Analysis Performed
+
+
 1. Sales Performance Analysis
 Analyzed:
 
-Total revenue generated
-Monthly sales trends
-Yearly sales growth
-Average order value
-Example:
+- Total revenue generated
+- Monthly sales trends
+- Yearly sales growth
+- Average order value
+- Example:
 
 SELECT 
 SUM(sales) AS total_revenue
 FROM orders;
+
+---
+
 2. Product Analysis
 Identified:
 
-Top-selling products
-Most profitable categories
-Product contribution to revenue
-Example:
+- Top-selling products
+- Most profitable categories
+- Product contribution to revenue
+- Example:
 
 SELECT
 product_name,
@@ -74,14 +90,17 @@ SUM(sales) AS revenue
 FROM orders
 GROUP BY product_name
 ORDER BY revenue DESC;
+
+---
+
 3. Customer Analysis
 Performed customer-level analysis:
 
-Top spending customers
-Customer purchase frequency
-Repeat customers
-Customer value analysis
-Example:
+- Top spending customers
+- Customer purchase frequency
+- Repeat customers
+- Customer value analysis
+- Example:
 
 SELECT
 customer_name,
@@ -89,23 +108,29 @@ SUM(sales) AS total_spending
 FROM orders
 GROUP BY customer_name
 ORDER BY total_spending DESC;
+
+---
+
 4. Regional Sales Analysis
 Analyzed:
 
-Sales by region
-State-wise performance
-Regional profitability
-Example:
+- Sales by region
+- State-wise performance
+- Regional profitability
+- Example:
 
 SELECT
 region,
 SUM(sales) AS revenue
 FROM orders
 GROUP BY region;
+
+---
+
 5. Customer Segmentation (RFM Analysis)
 Goes beyond simple top-spender ranking to classify every customer by behavior, using two complementary SQL approaches.
 
-Business Question:
+### Business Question:
 
 Who are our most valuable customers, and which valuable customers are at risk of churning?
 
@@ -194,12 +219,14 @@ Each customer gets a 3-digit code (e.g. "555" or "355") from their R/F/M scores 
 
 This information can be used for:
 
-Targeted win-back campaigns for "Can't Lose Them" customers
-Loyalty programs for Champions and Loyal Customers
-Personalized marketing spend allocation
-Churn-risk prioritization for the retention team
+- Targeted win-back campaigns for "Can't Lose Them" customers
+- Loyalty programs for Champions and Loyal Customers
+- Personalized marketing spend allocation
+- Churn-risk prioritization for the retention team
+
 📊 Advanced SQL Concepts Used
-The project applies:
+
+### The project applies:
 
 ✅ Aggregate Functions
 
@@ -229,14 +256,18 @@ DENSE_RANK()
 NTILE()
 ✅ Customer Segmentation Logic
 
-CASE WHEN rule-based segmentation
-NTILE-based relative RFM scoring
+- CASE WHEN rule-based segmentation
+- NTILE-based relative RFM scoring
+
+---
+
 📊 SQL Analysis Results
 Here are the screenshots of key SQL query outputs generated during the Ecommerce Sales Analytics project.
 
 The results demonstrate practical SQL analysis across customer behavior, sales trends, product performance, and customer segmentation.
 
-📁 Results
+📁 Results:
+
 1. Highest Purchasing Customer
 This analysis identifies the customer with the highest total purchase value.
 
@@ -249,6 +280,8 @@ Highest Purchasing Customer
 > Which customer has contributed the most revenue to the business?
 
 ![Highest Purchasing Customer](Results/highest_purchasing_customer.png)
+
+---
 
 2. Monthly Sales Analysis
 This analysis shows sales performance across different months.
@@ -270,6 +303,8 @@ Potential seasonal patterns
 
 ![Monthly Sales](Results/monthly_sales.png)
 
+---
+
 3. Top Customers
 This query ranks customers based on their total spending.
 
@@ -289,6 +324,8 @@ Customer retention strategies
 > Who are the most valuable customers?
 
 ![Top Customers](Results/top_customer.png)
+
+---
 
 4. Top Products
 This analysis identifies the products generating the highest sales.
@@ -310,6 +347,8 @@ Product portfolio optimization
 
 ![Top Products](Results/top_products.png)
 
+---
+
 5. Customer RFM Segments
 This analysis classifies every customer into an RFM segment based on recency, frequency, and monetary value.
 
@@ -326,24 +365,31 @@ RFM Segmentation
 🎯 Business Insights
 The SQL analysis provides a foundation for understanding:
 
-💰 Revenue performance
-👥 Customer purchasing behavior
-📈 Monthly sales trends
-🛍️ Product performance
-⭐ High-value customers and churn risk
-These results demonstrate how SQL can be used to transform transactional ecommerce data into actionable business insights.
+- 💰 Revenue performance
+- 👥 Customer purchasing behavior
+- 📈 Monthly sales trends
+- 🛍️ Product performance
+- ⭐ High-value customers and churn risk
+
+### These results demonstrate how SQL can be used to transform transactional ecommerce data into actionable business insights.
+
+---
 
 📈 Key Insights Generated
 Some insights obtained from analysis:
 
-Identified products generating maximum revenue.
-Found the highest-performing categories.
-Analyzed customer spending patterns.
-Compared sales performance across regions.
-Discovered repeat customer behavior.
-Evaluated profitability trends.
-Segmented customers into actionable RFM personas (Champions, At Risk, Hibernating, etc.) using relative ranking instead of fixed thresholds.
-📁 Project Structure
+- Identified products generating maximum revenue.
+- Found the highest-performing categories.
+- Analyzed customer spending patterns.
+- Compared sales performance across regions.
+- Discovered repeat customer behavior.
+- Evaluated profitability trends.
+- Segmented customers into actionable RFM personas (Champions, At Risk, Hibernating, etc.) using relative ranking instead of fixed thresholds.
+
+---
+
+### 📁 Project Structure
+
 Ecommerce-Sales-Analytics-SQL
 │
 ├── Dataset
@@ -363,20 +409,31 @@ Ecommerce-Sales-Analytics-SQL
 │   └── RFM_Customer_Segmentation_Project.pdf
 │
 └── README.md
+
+--- 
+
 🚀 Future Improvements
-Build an interactive Power BI dashboard
-Use RFM scores as input features for a K-Means clustering model
-Build a churn-prediction classifier on top of RFM features
-Automate reporting using Python
-Deploy analytics pipeline using cloud services
+
+- Build an interactive Power BI dashboard
+- Use RFM scores as input features for a K-Means clustering model
+- Build a churn-prediction classifier on top of RFM features
+- Automate reporting using Python
+- Deploy analytics pipeline using cloud services
+
+---
+
 👨‍💻 Author
+
 Anuj Bhatt
 
-Skills:
+### Skills:
 
-SQL
-Python
-Machine Learning
-Data Analytics
-Power BI
+- SQL
+- Python
+- Machine Learning
+- Data Analytics
+- Power BI
+
+
+
 ⭐ If you found this project useful, consider giving it a star!
