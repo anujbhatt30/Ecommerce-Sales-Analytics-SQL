@@ -183,6 +183,7 @@ SELECT
 FROM customer_spending
 ORDER BY total_spending DESC;
 ```
+---
 
 **Approach B — RFM Analysis (Relative Scoring)**
 Scores every customer on Recency, Frequency, and Monetary value using `NTILE(5)`, ranking customers relative to each other rather than against fixed numbers. Unlike Approach A, this method captures **recency** — so it can surface high-value customers who are going quiet, a signal the threshold method misses entirely.
