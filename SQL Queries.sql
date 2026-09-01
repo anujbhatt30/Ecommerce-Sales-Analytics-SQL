@@ -282,6 +282,23 @@ FROM customer_spending
 ORDER BY total_spending DESC;
 
 
+-- 15) Suppliers Revenue Ranking:
+WITH supplier_sales AS 
+(
+SELECT s.supplier_id,s.supplier_name,SUM(oi.quantity * oi.unit_price) AS revenue
+FROM suppliers s
+JOIN products p
+ON s.supplier_id=p.supplier_id
+JOIN order_items oi
+ON p.product_id=oi.product_id
+GROUP BY s.supplier_id,s.supplier_name
+)
+SELECT supplier_name, ROUND(revenue,2) AS REVENUE,
+RANK() OVER( ORDER BY REVENUE DESC) AS Supplier_Rank
+FROM Supplier_Sales
+ORDER BY supplier_rank;
+
+
 
 
 
