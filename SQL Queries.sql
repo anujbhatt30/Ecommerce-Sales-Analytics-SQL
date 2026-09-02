@@ -299,11 +299,27 @@ FROM Supplier_Sales
 ORDER BY supplier_rank;
 
 
-
-
-
-
-
+-- 16) Customers Above Average Spending:
+SELECT
+c.customer_id,
+CONCAT(c.first_name,' ',c.last_name) AS customer_name,
+SUM(oi.quantity * oi.unit_price) AS Total_Spending
+FROM customers c
+JOIN orders o
+ON c.customer_id=o.customer_id
+JOIN order_items oi
+ON o.order_id=oi.order_id
+GROUP BY customer_id,CONCAT(c.first_name,' ',c.last_name) 
+HAVING SUM(oi.quantity * oi.unit_price) >
+(SELECT AVG(Customer_Total) 
+FROM 
+(SELECT 
+SUM(oi2.quantity * oi2.unit_price) AS Customer_Total
+FROM orders o2
+JOIN order_items oi2
+ON o2.order_id=oi2.order_id
+GROUP BY o2.order_id) AS Customer_Spending)
+ORDER BY Total_Spending DESC;
 
 
 
