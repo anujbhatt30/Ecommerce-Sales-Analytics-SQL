@@ -456,12 +456,6 @@ Ecommerce-Sales-Analytics-SQL
 
 ---
 
-👨‍💻 Author
-
-Anuj Bhatt
-
----
-
 ## Skills:
 
 - SQL
@@ -471,5 +465,9 @@ Anuj Bhatt
 - Power BI
 
 ---
+
+👨‍💻 Author
+
+Anuj Bhatt
 
 ⭐ If you found this project useful, consider giving it a star!
