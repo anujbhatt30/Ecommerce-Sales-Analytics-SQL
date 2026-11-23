@@ -8,6 +8,7 @@ This project focuses on analyzing e-commerce sales data using SQL to extract mea
 The project demonstrates practical SQL skills including database creation, data importing, data cleaning, aggregation, joins, subqueries, CTEs, and window functions.
 
 ---
+---
 
 ## 🎯 Problem Statement
 E-commerce businesses generate large amounts of transactional data. Analyzing this data helps organizations understand:
